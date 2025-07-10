@@ -98,7 +98,12 @@ export async function updateCredits(userId: string, creditFee: number) {
   try {
     await connectToDatabase();
 
-    console.log("Updating credits for user:", userId, "with amount:", creditFee);
+    console.log(
+      "Updating credits for user:",
+      userId,
+      "with amount:",
+      creditFee
+    );
 
     const updatedUserCredits = await User.findOneAndUpdate(
       { _id: userId },
@@ -111,7 +116,10 @@ export async function updateCredits(userId: string, creditFee: number) {
       throw new Error("User credits update failed");
     }
 
-    console.log("Credits updated successfully. New balance:", updatedUserCredits.creditBalance);
+    console.log(
+      "Credits updated successfully. New balance:",
+      updatedUserCredits.creditBalance
+    );
     return JSON.parse(JSON.stringify(updatedUserCredits));
   } catch (error) {
     console.error("Error in updateCredits:", error);
