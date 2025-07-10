@@ -1,0 +1,24 @@
+<svg width="800" height="288" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dark-banner-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purple-overlay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7857FF;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#4318FF;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="288" fill="url(#dark-banner-gradient)" />
+  <rect width="800" height="288" fill="url(#purple-overlay)" />
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="50" r="2" fill="#7857FF" opacity="0.6" />
+  <circle cx="650" cy="80" r="1.5" fill="#4318FF" opacity="0.4" />
+  <circle cx="700" cy="200" r="2.5" fill="#7857FF" opacity="0.5" />
+  <circle cx="100" cy="220" r="1" fill="#4318FF" opacity="0.7" />
+  
+  <!-- Gradient overlays for depth -->
+  <ellipse cx="400" cy="144" rx="300" ry="100" fill="url(#purple-overlay)" opacity="0.3" />
+</svg>

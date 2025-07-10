@@ -71,27 +71,27 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gray-50 text-gray-900;
   }
 }
 
 .auth {
-  @apply flex-center min-h-screen w-full bg-purple-100
+  @apply flex-center min-h-screen w-full bg-purple-100;
 }
 
 .root {
-  @apply flex min-h-screen w-full flex-col bg-white lg:flex-row;
+  @apply flex min-h-screen w-full flex-col bg-gray-50 lg:flex-row;
 }
 
 .root-container {
-  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10
+  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10;
 }
 
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   /* ===== UTILITIES */
   .wrapper {
-    @apply max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 p-16-regular;
+    @apply max-w-5xl mx-auto px-5 md:px-10 w-full text-gray-800 p-16-regular;
   }
 
   .gradient-text {
@@ -220,11 +220,16 @@
 
   /* Home Page */
   .home {
-    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-inner;
+    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border p-10 shadow-inner;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%),
+      url("/assets/images/banner-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .home-heading {
-    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white shadow-sm;
+    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white drop-shadow-lg;
   }
 
   /* Credits Page */
@@ -316,7 +321,7 @@
   }
 
   .sidebar-logo {
-    @apply flex items-center gap-2 md:py-2;
+    @apply flex items-center gap-2 md:py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors duration-200;
   }
 
   .sidebar-nav {
@@ -374,3 +379,22 @@
   font-weight: 600;
   color: #384262;
 }
+
+/* ===== TEXT CONTRAST IMPROVEMENTS */
+.text-primary {
+  @apply text-gray-900;
+}
+
+.text-secondary {
+  @apply text-gray-700;
+}
+
+.text-muted {
+  @apply text-gray-500;
+}
+
+.text-light {
+  @apply text-gray-400;
+}
+
+/* ===== UTILITIES */

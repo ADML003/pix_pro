@@ -14,6 +14,7 @@ export async function POST(request: Request) {
   try {
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err) {
+    console.error("Stripe webhook signature verification failed:", err);
     return NextResponse.json({ message: "Webhook error", error: err });
   }
 
@@ -24,18 +25,33 @@ export async function POST(request: Request) {
   if (eventType === "checkout.session.completed") {
     const { id, amount_total, metadata } = event.data.object;
 
-    const transaction = {
-      stripeId: id,
-      amount: amount_total ? amount_total / 100 : 0,
-      plan: metadata?.plan || "",
-      credits: Number(metadata?.credits) || 0,
-      buyerId: metadata?.buyerId || "",
-      createdAt: new Date(),
-    };
+    console.log("Processing checkout.session.completed:", {
+      id,
+      amount_total,
+      metadata,
+    });
 
-    const newTransaction = await createTransaction(transaction);
-    
-    return NextResponse.json({ message: "OK", transaction: newTransaction });
+    try {
+      const transaction = {
+        stripeId: id,
+        amount: amount_total ? amount_total / 100 : 0,
+        plan: metadata?.plan || "",
+        credits: Number(metadata?.credits) || 0,
+        buyerId: metadata?.buyerId || "",
+        createdAt: new Date(),
+      };
+
+      const newTransaction = await createTransaction(transaction);
+
+      console.log("Transaction created successfully:", newTransaction);
+      return NextResponse.json({ message: "OK", transaction: newTransaction });
+    } catch (error) {
+      console.error("Error processing transaction:", error);
+      return NextResponse.json(
+        { message: "Transaction processing failed", error },
+        { status: 500 }
+      );
+    }
   }
 
   return new Response("", { status: 200 });
