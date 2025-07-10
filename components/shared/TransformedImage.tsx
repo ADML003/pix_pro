@@ -45,13 +45,7 @@ const TransformedImage = ({
               onClick={downloadHandler}
               title="Download image"
             >
-              <Image
-                src="/assets/icons/download.svg"
-                alt="Download"
-                width={24}
-                height={24}
-                className="pb-[6px]"
-              />
+              Download
             </button>
           )}
       </div>
