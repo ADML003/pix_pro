@@ -290,6 +290,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             isTransforming={isTransforming}
             setIsTransforming={setIsTransforming}
             transformationConfig={transformationConfig}
+            hasDownload={true}
           />
         </div>
 
