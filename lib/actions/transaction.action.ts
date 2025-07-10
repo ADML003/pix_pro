@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import Stripe from "stripe";
 import { handleError } from "../utils";
 import { connectToDatabase } from "../database/mongoose";
@@ -57,6 +58,9 @@ export async function createTransaction(transaction: CreateTransactionParams) {
     await updateCredits(transaction.buyerId, transaction.credits);
 
     console.log("Credits updated successfully");
+
+    // Revalidate profile page to show updated credits
+    revalidatePath("/profile");
 
     return JSON.parse(JSON.stringify(newTransaction));
   } catch (error) {
