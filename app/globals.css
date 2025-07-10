@@ -220,16 +220,27 @@
 
   /* Home Page */
   .home {
-    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border p-10 shadow-inner;
+    @apply flex-center min-h-72 flex-col gap-4 rounded-[20px] border p-4 sm:p-6 md:p-8 lg:p-10 shadow-inner mx-2 sm:mx-4;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%),
       url("/assets/images/banner-bg.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    overflow: hidden;
   }
 
   .home-heading {
-    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white drop-shadow-lg;
+    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white drop-shadow-lg px-4;
+  }
+
+  /* Ensure buttons don't overflow on mobile */
+  @media (max-width: 640px) {
+    .home {
+      @apply px-2 py-6;
+    }
+    .home ul {
+      @apply gap-2;
+    }
   }
 
   /* Credits Page */
