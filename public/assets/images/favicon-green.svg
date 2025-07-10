@@ -1,0 +1,24 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favicon-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="url(#favicon-green)"/>
+  
+  <!-- Lens design -->
+  <circle cx="16" cy="16" r="10" stroke="white" stroke-width="1.5" fill="none" opacity="0.3"/>
+  <circle cx="16" cy="16" r="6.5" fill="white" opacity="0.9"/>
+  <circle cx="16" cy="16" r="3" fill="url(#favicon-green)"/>
+  
+  <!-- Modern aperture elements -->
+  <g opacity="0.4">
+    <circle cx="11" cy="11" r="1" fill="url(#favicon-green)"/>
+    <circle cx="21" cy="11" r="0.8" fill="url(#favicon-green)"/>
+    <circle cx="21" cy="21" r="1" fill="url(#favicon-green)"/>
+    <circle cx="11" cy="21" r="0.8" fill="url(#favicon-green)"/>
+  </g>
+</svg>

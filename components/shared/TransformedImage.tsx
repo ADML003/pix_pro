@@ -40,7 +40,11 @@ const TransformedImage = ({
           image?.publicId &&
           transformationConfig &&
           !isTransforming && (
-            <button className="download-btn" onClick={downloadHandler}>
+            <button
+              className="download-btn"
+              onClick={downloadHandler}
+              title="Download image"
+            >
               <Image
                 src="/assets/icons/download.svg"
                 alt="Download"

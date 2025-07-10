@@ -1,0 +1,41 @@
+<svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="green-gradient-compact" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="green-text-compact" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Compact Logo Icon -->
+  <g transform="translate(2, 6)">
+    <circle cx="12" cy="12" r="10" stroke="url(#green-gradient-compact)" stroke-width="2" fill="none" opacity="0.2"/>
+    <circle cx="12" cy="12" r="6.5" fill="url(#green-gradient-compact)" opacity="0.9"/>
+    <circle cx="12" cy="12" r="2.5" fill="white"/>
+    
+    <!-- Subtle design elements -->
+    <circle cx="7" cy="7" r="1" fill="url(#green-gradient-compact)" opacity="0.4"/>
+    <circle cx="17" cy="7" r="0.8" fill="url(#green-gradient-compact)" opacity="0.3"/>
+    <circle cx="17" cy="17" r="1" fill="url(#green-gradient-compact)" opacity="0.4"/>
+    <circle cx="7" cy="17" r="0.8" fill="url(#green-gradient-compact)" opacity="0.3"/>
+  </g>
+  
+  <!-- Compact Text -->
+  <g transform="translate(28, 6)">
+    <text x="0" y="16" 
+          font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="20" 
+          font-weight="700" 
+          fill="url(#green-text-compact)" 
+          letter-spacing="-0.3px">Pix</text>
+    <text x="38" y="16" 
+          font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="20" 
+          font-weight="400" 
+          fill="#374151" 
+          letter-spacing="0.1px">Pro</text>
+  </g>
+</svg>

@@ -33,21 +33,13 @@
           font-weight="800" 
           fill="url(#text-gradient)" 
           letter-spacing="-0.8px">Pix</text>
-    <!-- Pro - Sophisticated complement -->
-    <text x="42" y="17" 
+    <!-- Pro - Now violet as well, positioned closer -->
+    <text x="35" y="17" 
           font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
           font-size="22" 
-          font-weight="300" 
-          fill="#1F2937" 
-          letter-spacing="0.2px">Pro</text>
+          font-weight="400" 
+          fill="url(#text-gradient)" 
+          letter-spacing="0.1px">Pro</text>
   </g>
   
-  <!-- Elegant tagline -->
-  <text x="30" y="27" 
-        font-family="ui-sans-serif, system-ui, sans-serif" 
-        font-size="8.5" 
-        font-weight="500" 
-        fill="#6B7280" 
-        letter-spacing="0.4px" 
-        opacity="0.9">CREATIVE VISION UNLEASHED</text>
 </svg>

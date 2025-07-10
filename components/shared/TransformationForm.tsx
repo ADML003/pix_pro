@@ -320,7 +320,6 @@ const TransformationForm = ({
             isTransforming={isTransforming}
             setIsTransforming={setIsTransforming}
             transformationConfig={transformationConfig}
-            hasDownload={true}
           />
         </div>
 
