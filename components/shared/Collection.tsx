@@ -121,6 +121,7 @@ const Card = ({ image }: { image: IImage }) => {
             alt={image.title}
             width={24}
             height={24}
+            className="icon-general"
           />
         </div>
       </Link>

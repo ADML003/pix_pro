@@ -41,7 +41,7 @@ import { useRouter } from "next/navigation";
 import { InsufficientCreditsModal } from "./InsufficientCreditsModal";
 
 export const formSchema = z.object({
-  title: z.string(),
+  title: z.string().min(1, "Title is required"),
   aspectRatio: z.string().optional(),
   color: z.string().optional(),
   prompt: z.string().optional(),
@@ -214,7 +214,11 @@ const TransformationForm = ({
         <CustomField
           control={form.control}
           name="title"
-          formLabel="Image Title"
+          formLabel={
+            <span className="text-dark-600">
+              Image Title <span className="text-red-500">*</span>
+            </span>
+          }
           className="w-full"
           render={({ field }) => <Input {...field} className="input-field" />}
         />

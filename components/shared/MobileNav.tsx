@@ -7,9 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="header">
@@ -24,16 +27,17 @@ const MobileNav = () => {
 
       <nav className="flex gap-2">
         <SignedIn>
+          <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
 
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger>
               <Image
                 src="/assets/icons/menu.svg"
                 alt="menu"
                 width={32}
                 height={32}
-                className="cursor-pointer"
+                className="cursor-pointer icon-menu"
               />
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
@@ -53,18 +57,20 @@ const MobileNav = () => {
                       <li
                         className={`${
                           isActive && "gradient-text"
-                        } p-18 flex whitespace-nowrap text-dark-700`}
+                        } p-18 flex whitespace-nowrap text-dark-700 dark:text-gray-300`}
                         key={link.route}
                       >
                         <Link
                           className="sidebar-link cursor-pointer"
                           href={link.route}
+                          onClick={() => setIsOpen(false)}
                         >
                           <Image
                             src={link.icon}
                             alt="logo"
                             width={24}
                             height={24}
+                            className="icon-nav"
                           />
                           {link.label}
                         </Link>

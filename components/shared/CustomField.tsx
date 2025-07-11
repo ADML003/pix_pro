@@ -16,7 +16,7 @@ type CustomFieldProps = {
   control: Control<z.infer<typeof formSchema>> | undefined;
   render: (props: { field: any }) => React.ReactNode;
   name: keyof z.infer<typeof formSchema>;
-  formLabel?: string;
+  formLabel?: string | React.ReactNode;
   className?: string;
 };
 

@@ -32,7 +32,7 @@ export const InsufficientCreditsModal = () => {
                 alt="credit coins"
                 width={24}
                 height={24}
-                className="cursor-pointer"
+                className="cursor-pointer icon-general"
               />
             </AlertDialogCancel>
           </div>

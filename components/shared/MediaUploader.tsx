@@ -5,6 +5,7 @@ import { dataUrl, getImageSize } from "@/lib/utils";
 import { CldImage, CldUploadWidget } from "next-cloudinary";
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 type MediaUploaderProps = {
   onValueChange: (value: string) => void;
@@ -81,6 +82,15 @@ const MediaUploader = ({
                   className="media-uploader_cldImage"
                 />
               </div>
+              <div className="flex justify-center mt-4">
+                <Button
+                  type="button"
+                  className="submit-button capitalize"
+                  onClick={() => open()}
+                >
+                  Reselect Image
+                </Button>
+              </div>
             </>
           ) : (
             <div className="media-uploader_cta" onClick={() => open()}>
@@ -90,6 +100,7 @@ const MediaUploader = ({
                   alt="Add Image"
                   width={24}
                   height={24}
+                  className="icon-general"
                 />
               </div>
               <p className="p-14-medium">Click here to upload image</p>

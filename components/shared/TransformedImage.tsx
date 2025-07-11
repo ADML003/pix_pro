@@ -78,6 +78,7 @@ const TransformedImage = ({
                 width={50}
                 height={50}
                 alt="spinner"
+                className="icon-general"
               />
               <p className="text-white/80">Please wait...</p>
             </div>

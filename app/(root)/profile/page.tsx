@@ -31,7 +31,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               alt="coins"
               width={50}
               height={50}
-              className="size-9 md:size-12"
+              className="size-9 md:size-12 icon-general"
             />
             <h2 className="h2-bold text-dark-600">{user.creditBalance}</h2>
           </div>
@@ -45,7 +45,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
               alt="coins"
               width={50}
               height={50}
-              className="size-9 md:size-12"
+              className="size-9 md:size-12 icon-general"
             />
             <h2 className="h2-bold text-dark-600">{images?.data.length}</h2>
           </div>

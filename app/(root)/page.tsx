@@ -33,7 +33,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
                       alt="image"
                       width={24}
                       height={24}
-                      className="w-6 h-6 sm:w-7 sm:h-7"
+                      className="w-6 h-6 sm:w-7 sm:h-7 icon-on-light-bg"
                     />
                   </div>
                   <p className="p-12-medium sm:p-14-medium text-center text-white drop-shadow-md text-xs sm:text-sm max-w-16 sm:max-w-20">
@@ -75,7 +75,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
                     alt="image"
                     width={24}
                     height={24}
-                    className="w-6 h-6 sm:w-6 sm:h-6"
+                    className="w-6 h-6 sm:w-6 sm:h-6 icon-on-light-bg"
                   />
                 </div>
                 <p className="p-12-medium sm:p-14-medium text-center text-white drop-shadow-md text-xs sm:text-sm">
