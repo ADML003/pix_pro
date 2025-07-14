@@ -63,7 +63,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
     <>
       <section className="home">
         <h1 className="home-heading">
-          Unleash Your Creative Vision with PixPro
+          Elevate Your Images with Professional AI Magic
         </h1>
         <ul className="flex-center w-full gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 px-4">
           {navLinks.slice(1, 5).map((link) => (
