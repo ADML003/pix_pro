@@ -14,11 +14,9 @@ const Home = async ({ searchParams }: SearchParamProps) => {
     return (
       <>
         <section className="home">
-          <h1 className="home-heading">
-            Unleash Your Creative Vision with PixPro
-          </h1>
+          <h1 className="home-heading">Professional AI Image Enhancement</h1>
           <p className="p-16-regular text-center text-white mt-4 px-4 max-w-md">
-            Please sign in to view and create amazing image transformations
+            Sign in to elevate your images with professional AI magic
           </p>
           <ul className="flex justify-center items-center w-full flex-wrap gap-3 sm:gap-6 md:gap-8 lg:gap-12 mt-8 px-2">
             {navLinks.slice(1, 5).map((link) => (

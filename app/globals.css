@@ -446,14 +446,34 @@
 .dark .cl-userButtonPopoverCard {
   background-color: #1f2937 !important;
   border-color: #374151 !important;
+  color: #e5e7eb !important;
 }
 
 .dark .cl-userButtonPopoverActionButton {
   color: #e5e7eb !important;
+  background-color: transparent !important;
 }
 
 .dark .cl-userButtonPopoverActionButton:hover {
   background-color: #374151 !important;
+  color: #ffffff !important;
+}
+
+.dark .cl-userButtonPopoverActionButtonText {
+  color: #e5e7eb !important;
+}
+
+.dark .cl-userButtonPopoverActionButtonIcon {
+  color: #e5e7eb !important;
+}
+
+.dark .cl-userButtonPopoverFooter {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark .cl-userButtonPopoverFooter * {
+  color: #e5e7eb !important;
 }
 
 /* ===== TEXT CONTRAST IMPROVEMENTS */
