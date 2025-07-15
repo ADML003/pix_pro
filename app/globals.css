@@ -272,8 +272,155 @@
     @apply h1-semibold max-w-[500px] flex-wrap text-center text-white drop-shadow-lg px-4;
   }
 
-  /* Ensure buttons don't overflow on mobile */
+  /* Login Page with Scrolling Background */
+  .login-container {
+    @apply relative min-h-screen w-full overflow-hidden;
+  }
+
+  .scrolling-bg {
+    @apply absolute inset-0 w-full h-full;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+
+  .scroll-track {
+    @apply absolute h-full flex flex-col gap-4;
+    width: 200px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .scroll-track-1 {
+    left: 10%;
+    animation: scrollDown 20s linear infinite;
+  }
+
+  .scroll-track-2 {
+    left: 50%;
+    animation: scrollUp 25s linear infinite;
+  }
+
+  .scroll-track-3 {
+    right: 10%;
+    animation: scrollDown 22s linear infinite;
+  }
+
+  .scroll-item {
+    @apply w-full h-32 sm:h-40 md:h-48 rounded-lg opacity-20;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .scroll-item:nth-child(1) {
+    background-image: linear-gradient(45deg, #ff6b6b20, #4ecdc420);
+  }
+  .scroll-item:nth-child(2) {
+    background-image: linear-gradient(45deg, #45b7d120, #96ceb420);
+  }
+  .scroll-item:nth-child(3) {
+    background-image: linear-gradient(45deg, #feca5720, #ff9ff320);
+  }
+  .scroll-item:nth-child(4) {
+    background-image: linear-gradient(45deg, #ff8a8020, #a8e6cf20);
+  }
+  .scroll-item:nth-child(5) {
+    background-image: linear-gradient(45deg, #dcedc820, #ffd3a520);
+  }
+  .scroll-item:nth-child(6) {
+    background-image: linear-gradient(45deg, #a8e6cf20, #ffd3a520);
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(100vh);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  .login-overlay {
+    @apply absolute inset-0 bg-black/40;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .login-card {
+    @apply relative z-10 flex flex-col items-center justify-center min-h-screen px-4;
+  }
+
+  .login-heading {
+    @apply text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center mb-4;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .login-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl text-center text-gray-200 mb-12 max-w-2xl;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .login-features {
+    @apply grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 md:gap-12;
+  }
+
+  .feature-item {
+    @apply flex flex-col items-center gap-3 p-4 rounded-xl;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .feature-icon {
+    @apply w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white p-3 shadow-lg flex items-center justify-center;
+  }
+
+  .feature-text {
+    @apply text-sm sm:text-base text-center text-white font-medium;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive adjustments */
   @media (max-width: 640px) {
+    .scroll-track {
+      width: 120px;
+    }
+    .scroll-item {
+      height: 100px;
+    }
+    .login-heading {
+      font-size: 2rem;
+    }
+    .login-subtitle {
+      font-size: 1rem;
+    }
     .home {
       @apply px-2 py-6;
     }

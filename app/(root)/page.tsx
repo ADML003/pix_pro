@@ -13,35 +13,62 @@ const Home = async ({ searchParams }: SearchParamProps) => {
   if (!userId) {
     return (
       <>
-        <section className="home">
-          <h1 className="home-heading">Professional AI Image Enhancement</h1>
-          <p className="p-16-regular text-center text-white mt-4 px-4 max-w-md">
-            Sign in to elevate your images with professional AI magic
-          </p>
-          <ul className="flex justify-center items-center w-full flex-wrap gap-3 sm:gap-6 md:gap-8 lg:gap-12 mt-8 px-2">
-            {navLinks.slice(1, 5).map((link) => (
-              <li
-                key={link.route}
-                className="flex-center flex-col gap-2 flex-shrink-0"
-              >
-                <Link href={link.route} className="flex-center flex-col gap-2">
-                  <div className="flex-center w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full bg-white p-3 sm:p-4 shadow-lg hover:shadow-xl transition-shadow">
+        <div className="login-container">
+          {/* Scrolling Background */}
+          <div className="scrolling-bg">
+            <div className="scroll-track scroll-track-1">
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+            </div>
+            <div className="scroll-track scroll-track-2">
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+            </div>
+            <div className="scroll-track scroll-track-3">
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+              <div className="scroll-item"></div>
+            </div>
+          </div>
+
+          {/* Overlay */}
+          <div className="login-overlay"></div>
+
+          {/* Content Card */}
+          <div className="login-card">
+            <h1 className="login-heading">Professional AI Image Enhancement</h1>
+            <p className="login-subtitle">
+              Sign in to elevate your images with professional AI magic
+            </p>
+            <div className="login-features">
+              {navLinks.slice(1, 5).map((link) => (
+                <div key={link.route} className="feature-item">
+                  <div className="feature-icon">
                     <Image
                       src={link.icon}
                       alt="image"
                       width={24}
                       height={24}
-                      className="w-6 h-6 sm:w-7 sm:h-7 icon-on-light-bg"
+                      className="w-6 h-6 icon-on-light-bg"
                     />
                   </div>
-                  <p className="p-12-medium sm:p-14-medium text-center text-white drop-shadow-md text-xs sm:text-sm max-w-16 sm:max-w-20">
-                    {link.label}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+                  <p className="feature-text">{link.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </>
     );
   }
