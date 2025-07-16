@@ -15,6 +15,24 @@ const IBMPlex = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "PixPro - Creative Vision Unleashed",
   description: "AI-powered image transformation and creative tool",
+  icons: {
+    icon: [
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "32x32",
+      },
+    ],
+    shortcut: "/favicon.ico",
+    apple: {
+      url: "/favicon.ico",
+      sizes: "32x32",
+    },
+  },
 };
 
 export default function RootLayout({

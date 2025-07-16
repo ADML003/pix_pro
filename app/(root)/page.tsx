@@ -74,7 +74,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
                 </div>
 
                 <div className="login-features">
-                  {navLinks.slice(1, 5).map((link) => (
+                  {navLinks.slice(1, 7).map((link) => (
                     <div key={link.route} className="feature-item">
                       <div className="feature-icon">
                         <Image
@@ -110,33 +110,66 @@ const Home = async ({ searchParams }: SearchParamProps) => {
 
   return (
     <>
-      <section className="home">
-        <h1 className="home-heading">
-          Elevate Your Images with Professional AI Magic
-        </h1>
-        <ul className="flex-center w-full gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 px-4">
-          {navLinks.slice(1, 5).map((link) => (
-            <li key={link.route} className="flex-center flex-col gap-2 min-w-0">
-              <Link href={link.route} className="flex-center flex-col gap-2">
-                <div className="flex-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white p-3 sm:p-4 shadow-lg hover:shadow-xl transition-shadow">
-                  <Image
-                    src={link.icon}
-                    alt="image"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6 sm:w-6 sm:h-6 icon-on-light-bg"
-                  />
-                </div>
-                <p className="p-12-medium sm:p-14-medium text-center text-white drop-shadow-md text-xs sm:text-sm">
-                  {link.label}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* Clean Home Dashboard */}
+      <div className="home-dashboard">
+        {/* Welcome Section */}
+        <div className="welcome-section">
+          <h1 className="welcome-title">
+            Welcome back, {user?.firstName || "User"}!
+          </h1>
+          <p className="welcome-subtitle">
+            Transform your images with professional AI magic
+          </p>
+        </div>
 
-      <section className="sm:mt-12">
+        {/* Feature Cards */}
+        <div className="feature-cards">
+          {navLinks.slice(1, 7).map((link, index) => (
+            <Link key={link.route} href={link.route} className="feature-card">
+              <div className="card-icon">
+                <Image
+                  src={link.icon}
+                  alt={link.label}
+                  width={36}
+                  height={36}
+                />
+              </div>
+              <div className="card-content">
+                <h3 className="card-title">{link.label}</h3>
+                <p className="card-description">
+                  {index === 0 &&
+                    "Enhance image quality, sharpness, and clarity with advanced AI algorithms"}
+                  {index === 1 &&
+                    "Intelligently fill gaps and reconstruct missing parts of your images"}
+                  {index === 2 &&
+                    "Remove unwanted objects and backgrounds seamlessly with AI precision"}
+                  {index === 3 &&
+                    "Perfect color balance, contrast, and lighting for professional results"}
+                  {index === 4 &&
+                    "Intelligent cropping with automatic face and object detection"}
+                  {index === 5 &&
+                    "Optimize images for web while maintaining excellent visual quality"}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="stats-section">
+          <div className="stat-item">
+            <div className="stat-number">{user?.creditBalance || 0}</div>
+            <div className="stat-label">Available Credits</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">{images?.data?.length || 0}</div>
+            <div className="stat-label">Images Processed</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Images Section */}
+      <section className="recent-section">
         <Collection
           hasSearch={false}
           images={images?.data}

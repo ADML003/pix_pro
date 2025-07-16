@@ -25,6 +25,16 @@ export const navLinks = [
     icon: "/assets/icons/filter.svg",
   },
   {
+    label: "Auto Crop & Focus",
+    route: "/transformations/add/crop",
+    icon: "/assets/icons/crop.svg",
+  },
+  {
+    label: "Image Compression",
+    route: "/transformations/add/compress",
+    icon: "/assets/icons/compress.svg",
+  },
+  {
     label: "Background Remove",
     route: "/transformations/add/removeBackground",
     icon: "/assets/icons/camera.svg",
@@ -158,6 +168,28 @@ export const transformationTypes = {
       recolor: { prompt: "", to: "", multiple: true },
     },
     icon: "filter.svg",
+  },
+  crop: {
+    type: "crop",
+    title: "Auto Crop & Focus",
+    subTitle: "Intelligent cropping with face and object detection",
+    config: {
+      crop: "auto",
+      gravity: "auto",
+      quality: "auto:good",
+    },
+    icon: "crop.svg",
+  },
+  compress: {
+    type: "compress",
+    title: "Image Compression",
+    subTitle: "Optimize images for web while maintaining quality",
+    config: {
+      quality: "auto:good",
+      format: "auto",
+      flags: ["progressive", "immutable_cache"],
+    },
+    icon: "compress.svg",
   },
 };
 
