@@ -14,58 +14,82 @@ const Home = async ({ searchParams }: SearchParamProps) => {
     return (
       <>
         <div className="login-container">
-          {/* Scrolling Background */}
-          <div className="scrolling-bg">
-            <div className="scroll-track scroll-track-1">
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
+          {/* Enhanced Background */}
+          <div className="login-background">
+            {/* Animated Gradient Layers */}
+            <div className="gradient-layer gradient-layer-1"></div>
+            <div className="gradient-layer gradient-layer-2"></div>
+            <div className="gradient-layer gradient-layer-3"></div>
+
+            {/* Floating Elements */}
+            <div className="floating-elements">
+              <div className="floating-element floating-element-1"></div>
+              <div className="floating-element floating-element-2"></div>
+              <div className="floating-element floating-element-3"></div>
+              <div className="floating-element floating-element-4"></div>
+              <div className="floating-element floating-element-5"></div>
+              <div className="floating-element floating-element-6"></div>
             </div>
-            <div className="scroll-track scroll-track-2">
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-            </div>
-            <div className="scroll-track scroll-track-3">
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
-              <div className="scroll-item"></div>
+
+            {/* Particle Effects */}
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
             </div>
           </div>
 
-          {/* Overlay */}
-          <div className="login-overlay"></div>
-
-          {/* Content Card */}
-          <div className="login-card">
-            <h1 className="login-heading">Professional AI Image Enhancement</h1>
-            <p className="login-subtitle">
-              Sign in to elevate your images with professional AI magic
-            </p>
-            <div className="login-features">
-              {navLinks.slice(1, 5).map((link) => (
-                <div key={link.route} className="feature-item">
-                  <div className="feature-icon">
+          {/* Main Content */}
+          <div className="login-content">
+            <div className="login-card-wrapper">
+              <div className="login-card">
+                {/* Top Header with Logo and Login Button */}
+                <div className="login-top-header">
+                  <div className="login-logo-section">
                     <Image
-                      src={link.icon}
-                      alt="image"
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 icon-on-light-bg"
+                      src="/assets/images/logo-text.svg"
+                      alt="PixPro logo"
+                      width={160}
+                      height={28}
+                      className="login-logo"
                     />
                   </div>
-                  <p className="feature-text">{link.label}</p>
+                  <Link href="/sign-in" className="login-button">
+                    Sign In
+                  </Link>
                 </div>
-              ))}
+
+                <div className="login-header">
+                  <h1 className="login-heading">
+                    Professional AI Image Enhancement
+                  </h1>
+                  <p className="login-subtitle">
+                    Sign in to elevate your images with professional AI magic
+                  </p>
+                </div>
+
+                <div className="login-features">
+                  {navLinks.slice(1, 5).map((link) => (
+                    <div key={link.route} className="feature-item">
+                      <div className="feature-icon">
+                        <Image
+                          src={link.icon}
+                          alt="image"
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 icon-on-light-bg"
+                        />
+                      </div>
+                      <p className="feature-text">{link.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
