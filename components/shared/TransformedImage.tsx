@@ -19,21 +19,23 @@ const TransformedImage = ({
   // Helper function to filter transformation config for Cloudinary
   const getCloudinaryConfig = (config: any) => {
     if (!config) return {};
-    
+
     const cloudinaryConfig: any = {};
-    
+
     // Copy only Cloudinary-compatible properties
     if (config.restore) cloudinaryConfig.restore = config.restore;
-    if (config.fillBackground) cloudinaryConfig.fillBackground = config.fillBackground;
+    if (config.fillBackground)
+      cloudinaryConfig.fillBackground = config.fillBackground;
     if (config.remove) cloudinaryConfig.remove = config.remove;
     if (config.recolor) cloudinaryConfig.recolor = config.recolor;
-    if (config.removeBackground) cloudinaryConfig.removeBackground = config.removeBackground;
+    if (config.removeBackground)
+      cloudinaryConfig.removeBackground = config.removeBackground;
     if (config.quality) cloudinaryConfig.quality = config.quality;
     if (config.format) cloudinaryConfig.format = config.format;
     if (config.flags) cloudinaryConfig.flags = config.flags;
     if (config.crop) cloudinaryConfig.crop = config.crop;
     if (config.gravity) cloudinaryConfig.gravity = config.gravity;
-    
+
     return cloudinaryConfig;
   };
 
