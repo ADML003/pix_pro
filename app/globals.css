@@ -1200,6 +1200,48 @@
   }
 }
 
+/* ==================== FILE SIZE INFORMATION STYLES ==================== */
+
+.file-size-info {
+  @apply bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700;
+}
+
+.size-comparison {
+  @apply flex flex-col gap-2;
+}
+
+.size-item {
+  @apply flex justify-between items-center;
+}
+
+.size-label {
+  @apply text-sm font-medium text-gray-600 dark:text-gray-400;
+}
+
+.size-value {
+  @apply text-sm font-semibold text-gray-900 dark:text-gray-100;
+}
+
+.compression-ratio {
+  @apply flex justify-between items-center pt-2 border-t border-gray-200 dark:border-gray-600;
+}
+
+.ratio-label {
+  @apply text-sm font-medium text-gray-600 dark:text-gray-400;
+}
+
+.ratio-value {
+  @apply text-sm font-semibold text-green-600 dark:text-green-400;
+}
+
+.compression-fields {
+  @apply flex flex-col gap-4 sm:flex-row sm:gap-6;
+}
+
+.compression-fields .w-full {
+  @apply flex-1;
+}
+
 /* ==================== TOP NAVIGATION STYLES ==================== */
 
 .top-navigation {

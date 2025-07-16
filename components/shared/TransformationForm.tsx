@@ -28,6 +28,8 @@ import {
   creditFee,
   defaultValues,
   transformationTypes,
+  compressionOptions,
+  formatOptions,
 } from "@/constants";
 import { CustomField } from "./CustomField";
 import { useEffect, useState, useTransition } from "react";
@@ -46,6 +48,8 @@ export const formSchema = z.object({
   color: z.string().optional(),
   prompt: z.string().optional(),
   publicId: z.string(),
+  quality: z.string().optional(),
+  format: z.string().optional(),
 });
 
 const TransformationForm = ({
@@ -64,6 +68,8 @@ const TransformationForm = ({
   const [isTransforming, setIsTransforming] = useState(false);
   const [transformationConfig, setTransformationConfig] = useState(config);
   const [isPending, startTransition] = useTransition();
+  const [originalSize, setOriginalSize] = useState<number | null>(null);
+  const [transformedSize, setTransformedSize] = useState<number | null>(null);
   const router = useRouter();
 
   const initialValues =
@@ -74,6 +80,8 @@ const TransformationForm = ({
           color: data?.color,
           prompt: data?.prompt,
           publicId: data?.publicId,
+          quality: data?.quality || "auto:good",
+          format: data?.format || "auto",
         }
       : defaultValues;
 
@@ -168,6 +176,19 @@ const TransformationForm = ({
     return onChangeField(value);
   };
 
+  const onCompressionChangeHandler = (
+    fieldName: string,
+    value: string,
+    onChangeField: (value: string) => void
+  ) => {
+    setNewTransformation((prevState: any) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
+
+    return onChangeField(value);
+  };
+
   const onInputChangeHandler = (
     fieldName: string,
     value: string,
@@ -190,19 +211,56 @@ const TransformationForm = ({
   const onTransformHandler = async () => {
     setIsTransforming(true);
 
-    setTransformationConfig(
-      deepMergeObjects(newTransformation, transformationConfig)
+    // Get original image size
+    if (image?.secureURL && !originalSize) {
+      try {
+        const response = await fetch(image.secureURL, { method: "HEAD" });
+        const size = parseInt(response.headers.get("content-length") || "0");
+        setOriginalSize(size);
+      } catch (error) {
+        console.error("Error fetching original size:", error);
+      }
+    }
+
+    const updatedConfig = deepMergeObjects(
+      newTransformation,
+      transformationConfig
     );
+    setTransformationConfig(updatedConfig);
 
     setNewTransformation(null);
 
     startTransition(async () => {
       await updateCredits(userId, creditFee);
     });
+
+    setIsTransforming(false);
+  };
+
+  // Function to format file size
+  const formatFileSize = (bytes: number): string => {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  };
+
+  // Function to calculate compression ratio
+  const getCompressionRatio = (): string => {
+    if (!originalSize || !transformedSize) return "";
+    const ratio = ((originalSize - transformedSize) / originalSize) * 100;
+    return `${ratio.toFixed(1)}% reduction`;
   };
 
   useEffect(() => {
-    if (image && (type === "restore" || type === "removeBackground")) {
+    if (
+      image &&
+      (type === "restore" ||
+        type === "removeBackground" ||
+        type === "crop" ||
+        type === "compress")
+    ) {
       setNewTransformation(transformationType.config);
     }
   }, [image, transformationType.config, type]);
@@ -301,6 +359,120 @@ const TransformationForm = ({
           </div>
         )}
 
+        {(type === "compress" || type === "crop") && (
+          <div className="compression-fields">
+            <CustomField
+              control={form.control}
+              name="quality"
+              formLabel="Quality Level"
+              className="w-full"
+              render={({ field }) => (
+                <Select
+                  onValueChange={(value) =>
+                    onCompressionChangeHandler("quality", value, field.onChange)
+                  }
+                  value={field.value}
+                >
+                  <SelectTrigger className="select-field">
+                    <SelectValue placeholder="Select quality" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(compressionOptions).map((key) => (
+                      <SelectItem key={key} value={key} className="select-item">
+                        <div className="flex flex-col">
+                          <span>
+                            {
+                              compressionOptions[
+                                key as keyof typeof compressionOptions
+                              ].label
+                            }
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {
+                              compressionOptions[
+                                key as keyof typeof compressionOptions
+                              ].description
+                            }
+                          </span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+            />
+
+            <CustomField
+              control={form.control}
+              name="format"
+              formLabel="Output Format"
+              className="w-full"
+              render={({ field }) => (
+                <Select
+                  onValueChange={(value) =>
+                    onCompressionChangeHandler("format", value, field.onChange)
+                  }
+                  value={field.value}
+                >
+                  <SelectTrigger className="select-field">
+                    <SelectValue placeholder="Select format" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(formatOptions).map((key) => (
+                      <SelectItem key={key} value={key} className="select-item">
+                        <div className="flex flex-col">
+                          <span>
+                            {
+                              formatOptions[key as keyof typeof formatOptions]
+                                .label
+                            }
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {
+                              formatOptions[key as keyof typeof formatOptions]
+                                .description
+                            }
+                          </span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+            />
+          </div>
+        )}
+
+        {/* File Size Information */}
+        {(originalSize || transformedSize) && (
+          <div className="file-size-info">
+            <div className="size-comparison">
+              {originalSize && (
+                <div className="size-item">
+                  <span className="size-label">Original Size:</span>
+                  <span className="size-value">
+                    {formatFileSize(originalSize)}
+                  </span>
+                </div>
+              )}
+              {transformedSize && (
+                <div className="size-item">
+                  <span className="size-label">Compressed Size:</span>
+                  <span className="size-value">
+                    {formatFileSize(transformedSize)}
+                  </span>
+                </div>
+              )}
+              {originalSize && transformedSize && (
+                <div className="compression-ratio">
+                  <span className="ratio-label">Compression:</span>
+                  <span className="ratio-value">{getCompressionRatio()}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className="media-uploader-field">
           <CustomField
             control={form.control}
@@ -324,6 +496,7 @@ const TransformationForm = ({
             isTransforming={isTransforming}
             setIsTransforming={setIsTransforming}
             transformationConfig={transformationConfig}
+            onSizeCalculated={setTransformedSize}
           />
         </div>
 

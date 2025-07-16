@@ -214,12 +214,65 @@ export const aspectRatioOptions = {
   },
 };
 
+export const compressionOptions = {
+  "auto:best": {
+    quality: "auto:best",
+    label: "Best Quality",
+    description: "Highest quality, larger file size",
+  },
+  "auto:good": {
+    quality: "auto:good",
+    label: "Good Quality",
+    description: "Balanced quality and file size",
+  },
+  "auto:eco": {
+    quality: "auto:eco",
+    label: "Eco Mode",
+    description: "Smaller file size, good for web",
+  },
+  "auto:low": {
+    quality: "auto:low",
+    label: "Low Quality",
+    description: "Smallest file size, basic quality",
+  },
+};
+
+export const formatOptions = {
+  auto: {
+    format: "auto",
+    label: "Auto Format",
+    description: "Automatically choose the best format",
+  },
+  webp: {
+    format: "webp",
+    label: "WebP",
+    description: "Modern format with excellent compression",
+  },
+  avif: {
+    format: "avif",
+    label: "AVIF",
+    description: "Next-gen format with superior compression",
+  },
+  jpg: {
+    format: "jpg",
+    label: "JPEG",
+    description: "Traditional format, widely supported",
+  },
+  png: {
+    format: "png",
+    label: "PNG",
+    description: "Lossless format, good for graphics",
+  },
+};
+
 export const defaultValues = {
   title: "",
   aspectRatio: "",
   color: "",
   prompt: "",
   publicId: "",
+  quality: "auto:good",
+  format: "auto",
 };
 
 export const creditFee = -1;

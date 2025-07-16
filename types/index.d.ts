@@ -137,4 +137,5 @@ declare type TransformedImageProps = {
   isTransforming: boolean;
   hasDownload?: boolean;
   setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
+  onSizeCalculated?: (size: number) => void;
 };

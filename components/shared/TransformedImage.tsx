@@ -14,6 +14,7 @@ const TransformedImage = ({
   isTransforming,
   setIsTransforming,
   hasDownload = false,
+  onSizeCalculated,
 }: TransformedImageProps) => {
   const downloadHandler = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -29,6 +30,25 @@ const TransformedImage = ({
       }),
       title
     );
+  };
+
+  const handleImageLoad = async (e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (onSizeCalculated) {
+      try {
+        const transformedUrl = getCldImageUrl({
+          width: image?.width,
+          height: image?.height,
+          src: image?.publicId,
+          ...transformationConfig,
+        });
+
+        const response = await fetch(transformedUrl, { method: "HEAD" });
+        const size = parseInt(response.headers.get("content-length") || "0");
+        onSizeCalculated(size);
+      } catch (error) {
+        console.error("Error calculating transformed size:", error);
+      }
+    }
   };
 
   return (
@@ -60,8 +80,9 @@ const TransformedImage = ({
             sizes={"(max-width: 767px) 100vw, 50vw"}
             placeholder={dataUrl as PlaceholderValue}
             className="transformed-image"
-            onLoad={() => {
+            onLoad={(e) => {
               setIsTransforming && setIsTransforming(false);
+              handleImageLoad(e);
             }}
             onError={() => {
               debounce(() => {
