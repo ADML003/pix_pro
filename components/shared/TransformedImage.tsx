@@ -134,5 +134,5 @@ const TransformedImage = ({
     </div>
   );
 };
-
+//exporting TransformedImage component
 export default TransformedImage;
